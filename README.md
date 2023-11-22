@@ -27,7 +27,7 @@ shapes.push_back(std::make_unique<Banana>());
 
 
 for (auto& shape : shapes) {
-    // Can work with Circles and Squares but not Bananas
+  // Can work with Circles and Squares but not Bananas
   shape->Visit<Circle, Square>([](auto ptr) {
     if constexpr (std::is_same_v<decltype(ptr), Circle*>) {
       ASSERT_EQ(ptr->name, "Circle");
