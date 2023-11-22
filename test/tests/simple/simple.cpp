@@ -10,11 +10,15 @@ struct Circle : avisit::VisitableOf<Circle> {
 struct Square : avisit::VisitableOf<Square> {
   std::string name = "Square";
 };
+struct Banana : avisit::VisitableOf<Banana> {
+  int weight = 1;
+};
 
 TEST(simple, Simple) {
   std::vector<std::unique_ptr<avisit::Visitable>> shapes;
   shapes.push_back(std::make_unique<Circle>());
   shapes.push_back(std::make_unique<Square>());
+  shapes.push_back(std::make_unique<Banana>());
 
   for (auto& shape : shapes) {
     shape->Visit<Circle, Square>([](auto ptr) {

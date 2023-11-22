@@ -62,6 +62,9 @@ struct Visitable {
 
 template <PureType T>
 struct VisitableOf : Visitable {
+  friend T;
+
+ private:
   consteval VisitableOf()
       : Visitable(TypeKey<T>{}) {
   }
